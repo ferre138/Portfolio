@@ -4,29 +4,111 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- FontsAwesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 	<title>Jay Bandeira | Web Development and Digital Marketing</title>
 
+	<style type="text/css">
+		header .navbar-brand img{
+			max-width: 60px;
+			padding-right: 10px;
+		}
+		.navbar .navbar-light{
+			background-color: #ffffff;
+		}
+		.navbar-nav{
+			text-align: right;
+		}
+		.header-content {
+		    height: 60vh;
+		    text-align: left;
+		    width: 100%;
+		    display: flex;
+		    justify-content: center;
+		    flex-direction: column;
+		}
+		.header-content h1 {
+		    font-size: 40px;
+		    font-weight: 700;
+		    margin-bottom: 10px;
+		    text-transform: uppercase;
+		}
+		.header-content p {
+		    font-size: 13px;
+		    letter-spacing: 5px;
+		    margin-top: 0;
+		    margin-bottom: 30px;
+		    text-transform: capitalize;
+		    font-weight: 500;
+		}
+	</style>
+
 </head>
 <body>
-	<div>
-		<div>
-			<a href="index.html">Logo</a>
-		</div>
-		<div>
-			<ul>
-				<li>Home</li>
-				<li>About</li>
-				<li>Skills</li>
-				<li>Portfolio</li>
-				<li>Blog</li>
-				<li>Contact</li>
-			</ul>
+	<header>
+		<nav class="site-header sticky-top py-1 navbar navbar-expand-lg navbar-light">
+			<div class="container">
+				<a class="navbar-brand" href=""><img class="img-responsive" src="./public/images/jb_favicon.png" alt="Jay Bandeira" title="Jay Bandeira">Jay Bandeira</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Skills</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Portfolio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Blog</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Contact</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link p-2" href="https://github.com/ferre138" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link p-2" href="https://www.linkedin.com/in/jayme-cunha-b53a8980/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div id="hero-header">
+		<div class="container">
+			<div class="header-content col-md-12">
+				<div class="row">
+					<div class="col-md-6">
+						<h1>I'm <span class="typed"></span>
+								<span class="typed-cursor">|</span>
+						</h1>
+						<p>Web Developer, Digital Marketing Specialist</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<div class="row">
+        
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">1</div>
+            <div class="col-md-6">2</div>
+          </div>        
+    </div>
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
