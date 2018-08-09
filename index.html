@@ -18,11 +18,19 @@
 
 	<style type="text/css">
 		p{
-			margin: 25px 0;
-			padding: 0;
 			font-size: 15px;
 			color: #666666;
 			line-height: 28px;
+			margin-top: 10px;
+		}
+		.padding-5{
+			padding:0 5px;
+		}
+		.padding-10{
+			padding:0 10px;
+		}
+		.padding-20{
+			padding:0 20px;
 		}
 		header{
 			box-shadow: 0px 2px 50px 0px rgba(0, 0, 0, 0.18);
@@ -35,7 +43,7 @@
 			background-color: #ffffff;
 		}
 		header .navbar-nav{
-			text-align: right;
+			text-align: center;
 		}
 		#hero-header .header-content {
 		    text-align: left;
@@ -63,6 +71,9 @@
 		#hero-header .header-content .list-social li i {
 		    color: #212529;
 		    font-size: 15px;
+		}
+		#hero-header .row .col-sm-12:last-child{
+			display: none;
 		}
 		#hero-header .profile-img{
 			border-radius: 50%;
@@ -100,13 +111,39 @@
 		}
 		#skills .section-title{
 			padding-top: 90px;
-			margin-bottom: 50px;
+			margin-bottom: 30px;
+		}
+		#skills .project {
+			opacity: .3;
+			max-width: 100%;
+			will-change: opacity;
+			object-fit: cover;
+			transition: opacity .2s ease-in-out;
+			padding: 30px;
+		}
+		#skills .container .row{
+			margin: auto;
+		}
+		#skills .skill-icons img{
+			max-width: 120px;
+
+		}
+		@media (min-width: 768px){
+			#hero-header .row .col-sm-12:last-child{
+				display: block;
+			}
+		}
+		.skill-icons{
+			transition: 0.5s ease;
+		}
+		.skill-icons:hover{
+			transform: scale(1.5);
 		}
 	</style>
 
 </head>
 <body>
-	<header>
+	<header id="navigation">
 		<nav class="site-header sticky-top py-1 navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand" href=""><img class="img-responsive" src="./public/images/jb_favicon.png" alt="Jay Bandeira" title="Jay Bandeira Logo">Jay Bandeira</a>
@@ -162,7 +199,7 @@
 							<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
 						</ul>
 					</div>
-					<div class="col-md-6 align-self-center">
+					<div class="col-md-6 col-sm-12 align-self-center">
  						<img src="public/images/ppBW.jpg" class="profile-img img-fluid" alt="Jay Bandeira Profile">
  					</div>
 				</div>
@@ -183,7 +220,7 @@
 					<div class="col-lg-7">
 						<div class="about-descr">
 
-							<p class="p-heading">I'm a Full Stack Developer, Toronto based, who loves clean, intelligent &amp; efficient code.<br>I also enjoy crafting beautifully designed, high-ranked websites through SEO, and creating and managing e-mail marketing campaigns as well as e-commerce stores.</p>
+							<p class="p-heading">I'm a Full Stack Developer, Toronto based, who loves clean, intelligent &amp; efficient code.</p ><p class="p-heading">I also enjoy crafting beautifully designed, high-ranked websites through SEO. Creating and managing e-mail marketing campaigns, and attractive e-commerce stores.</p>
 							<p class="separator">I'm a sucker for nature, the environment, and my velo <i class="fas fa-bicycle"></i>. When I'm not with my laptop you will find me either on my bicycle, or exploring a new hiking trail.<br>- - - - - - - - - - - - - - - - - - <i class="fas fa-walking"></i></p>
 						</div>
 					</div>
@@ -195,8 +232,100 @@
 		<div class="container">
 			<div class="section-title text-center">
 				<h2>Skills</h2>
-      		</div>
-		</div>
+			</div>
+			<div class="row justify-content-between">
+				<div id="frontend" class="col-lg-6">
+					<h5 class="skillset-title text-left">Frontend</h5>
+					<hr class="mb-1">
+					<div class="row mb-4">
+						<a class="skill-icons align-self-center text-center">
+		      				<img src="public/images/html.png" class="img-fluid image">
+		      			</a>
+		      			<a class="skill-icons align-self-center text-center">
+							<img src="public/images/css.png" class="img-fluid image">
+		  				</a>
+		  				<a class="skill-icons align-self-center text-center">
+		  					<img src="public/images/js480fullyellow.png" class="img-fluid image">
+		  				</a>
+		  				<a class="skill-icons align-self-center text-center">
+		      				<img src="public/images/react.png" class="img-fluid image">
+		      			</a>
+		      		</div>
+				</div>
+				<div id="backend" class=" col-lg-6">
+					<h5 class="skillset-title text-left">Backend</h5>
+					<hr class="mb-0">
+					<div class="row mb-4">
+						<a class="skill-icons align-self-center text-center padding-20">
+							<img src="public/images/nodejs.png" class="img-fluid image">
+		  				</a>
+		  				<a class="skill-icons align-self-center text-center padding-20">
+		  					<img src="public/images/express.png" class="img-fluid image">
+		  				</a>
+		  				<a class="skill-icons align-self-center text-center">
+		      				<img src="public/images/php.png" class="img-fluid image">
+		      			</a>
+		      		</div>
+				</div>
+				<div id="tools" class="col-lg-6">
+					<h5 class="skillset-title text-left">Tools</h5>
+					<hr class="mb-0">
+					<div class="row mb-4">
+						<a class="skill-icons align-self-center text-center padding-10">
+							<img src="public/images/aws.png" class="img-fluid image">
+		  				</a>
+						<a class="skill-icons align-self-center text-center padding-10">
+							<img src="public/images/cloud9.png" class="img-fluid image">
+						</a>
+						<a class="skill-icons align-self-center text-center">
+							<img src="public/images/heroku.png" class="img-fluid image">
+						</a>
+		      		</div>
+				</div>
+				<div id="database" class="col-lg-6">
+					<h5 class="skillset-title text-left">Database</h5>
+					<hr class="mb-0">
+					<div class="row mb-4">
+		  				<a class="skill-icons align-self-center text-center padding-10">
+		      				<img src="public/images/mysql.png" class="img-fluid image">
+		      			</a>
+		  				<a class="skill-icons align-self-center text-center padding-10">
+		      				<img src="public/images/mongodb.png" class="img-fluid image">
+		      			</a>
+		      		</div>
+				</div>
+				<div id="digitalmarkt" class="col-lg-6">
+					<h5 class="skillset-title text-left">Digital Marketing</h5>
+					<hr class="mb-0">
+					<div class="row mb-4">
+						<a class="skill-icons align-self-center text-center padding-5">
+							<img src="public/images/adwords.png" class="img-fluid image">
+						</a>
+		  				<a class="skill-icons align-self-center text-center padding-5">
+							<img src="public/images/analytics.png" class="img-fluid image">
+						</a>
+						<a class="skill-icons align-self-center text-center padding-5">
+							<img src="public/images/mailchimp.png" class="img-fluid image">
+						</a>
+						<a class="skill-icons align-self-center text-center padding-5">
+							<img src="public/images/SEO.png" class="img-fluid image">
+						</a>
+		      		</div>
+				</div>
+	      		<div id="CMS" class="col-lg-6">
+					<h5 class="skillset-title text-left">CMS</h5>
+					<hr class="mb-0">
+					<div class="row mb-4">
+						<a class="skill-icons align-self-center text-center">
+							<img src="public/images/shopify.png" class="img-fluid image">
+						</a>
+						<a class="skill-icons align-self-center text-center">
+							<img src="public/images/wordpress-icon.png" class="img-fluid image">
+						</a>
+		      		</div>
+				</div>
+			</div>
+      	</div>
 	</section>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
