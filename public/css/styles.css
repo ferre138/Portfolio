@@ -31,19 +31,23 @@ header {
     opacity: .98;
     box-shadow: 0px 2px 50px 0px rgba(0, 0, 0, 0.18);
 }
-
 header .navbar-brand img {
     max-width: 60px;
     padding-right: 10px;
 }
-
 header .navbar .navbar-light {
     background-color: #fff;
 }
-
 header .navbar-nav {
     text-align: center;
 }
+.navbar-light .navbar-nav .nav-link.resume{
+    color: white;
+    width: fit-content;
+    padding: 5px 20px;
+    margin: 0 auto 5px auto;
+}
+
 #hero-header{
     padding-top: 80px;
 }
@@ -221,21 +225,33 @@ header .navbar-nav {
         padding: 120px 0 80px 0;
     }
     #about .div-img-bg {
-        padding-bottom: 40px;
         border: 20px solid #b8a07e;
-        width: fit-content;
+        width: 250px;
     }
     #about .div-img-bg .about-img img {
         box-shadow: 0px 0px 85px 0px rgba(0, 0, 0, 0.14);
-        margin-left: 50px;
-        margin-top: -60px;
         object-fit: cover;
+    }
+    #about .about-descr{
+        margin-top: -50px;
     }
 }
 
 @media (min-width: 1024px){
     #about {
-        padding: 200px 0 80px 0;
+        padding: 150px 0 80px 0;
+    }
+    #about .div-img-bg {
+        padding-bottom: 40px;
+        border: 20px solid #b8a07e;
+        width: fit-content;
+    }
+    #about .div-img-bg .about-img img {
+        margin-left: 50px;
+        margin-top: -60px;
+    }
+    #about .about-descr{
+        margin-top: 0;
     }
     #about .about-descr .p-heading {
         font-size: 28px;
