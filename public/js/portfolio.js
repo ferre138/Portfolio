@@ -1,4 +1,8 @@
+/*global $, jQuery, alert*/
 $(document).ready(function(){
+
+  'use strict';
+
   // Add smooth scrolling to all links
   $("a").on('click', function(event) {
 
@@ -28,7 +32,9 @@ $(document).ready(function(){
     } // End if
   });
 
-  // Add fade in to View Button inside .card
+  // ========================================================================= //
+  //  Add fade in to View Button inside .card
+  // ========================================================================= //
   if($(window).width() > 576){
 		$(".card").hover(
 			function(){
@@ -40,5 +46,25 @@ $(document).ready(function(){
 			}
 		);
 	};
+
+  // ========================================================================= //
+  //  Typed Js
+  // ========================================================================= //
+  var typed = $(".typed");
+  var trail = $(".trail");
+
+  $(function() {
+    typed.typed({
+      strings: ["Jay Bandeira", "A Developer", "A Freelancer", "An Instructor"],
+      typeSpeed: 100,
+      loop: true,
+    });
+    trail.typed({
+      strings: ["--------------------------------"],
+      typeSpeed: 100,
+      loop: true,
+      showCursor: false,
+    });
+  });
 
 });
