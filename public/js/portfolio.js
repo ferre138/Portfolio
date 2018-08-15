@@ -55,7 +55,7 @@ $(document).ready(function(){
 
   $(function() {
     typed.typed({
-      strings: ["Jay Bandeira.", "A Developer.", "A Freelancer.", "An Instructor."],
+      strings: ["Jay Bandeira.", "A Developer.", "A Designer.", "A Freelancer."],
       typeSpeed: 100,
       loop: true,
     });
