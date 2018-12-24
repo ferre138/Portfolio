@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Jay Bandeira | Monster Slayer</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<style type="text/css">
+    .lifeBar{
+        width: 100%;
+        height: 3rem;
+    }
+    .playerBar{
+        background-color: cadetblue;
+        color: blue;
+    }
+    .monsterBar{
+        background-color:thistle;
+        color: red;
+    }
+    .healBar{
+        background-color:lightgreen;
+        color: green; 
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center py-3 pt-md-5">
+                    <h1>YOU</h1>
+                    <div class="lifeBar bg-light">
+                        <div class="h-100 d-flex align-items-center justify-content-center bg-success" :style="[{width: playerLife + '%'}, {transition: 'width .5s linear'}]">
+                            <p class="my-0 text-white">{{playerLife}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center py-3 pt-md-5">
+                    <h1>MONSTER</h1>
+                    <div class="lifeBar bg-light">
+                        <div class="h-100 d-flex align-items-center justify-content-center bg-primary" :style="[{width: monsterLife + '%'}, {transition: 'width .5s linear'}]">
+                            <p class="my-0 text-white">{{monsterLife}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card my-4">
+                <div class="card-body text-center">
+                    <button v-if="isNewGame" @click="isNewGame = false" class="btn btn-info btn-lg">START NEW GAME</button>
+                    <div v-else class="justify-content-around">
+                        <button @click="doAction('attack')" class="mt-2 my-md-0 btn btn-danger btn-lg">ATTACK</button>
+                        <button @click="doAction('spcAttack')" class="mt-2 my-md-0 btn btn-warning btn-lg">SPECIAL ATTACK</button>
+                        <button @click="doAction('heal')" class="mt-2 my-md-0 btn btn-success btn-lg">HEAL</button>
+                        <button @click="reset" class="mt-2 my-md-0 btn btn-light btn-lg">GIVE UP</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <template v-for="move in moves">
+                        <template v-if="move.heal">
+                            <div class="healBar mx-md-5 text-center my-2">Player was healed {{move.heal}} points.</div>
+                            <div class="monsterBar mx-md-5 text-center my-2">But monster hits player for {{move.damage}}</div>
+                        </template>
+                        <template v-else-if="move.hit">
+                            <div class="playerBar mx-md-5 text-center my-2">Player hits monster for {{move.hit}}</div>
+                            <div class="monsterBar mx-md-5 text-center my-2">Monster hits player for {{move.damage}}</div>
+                        </template>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                isNewGame: true,
+                playerLife: 100,
+                monsterLife: 100,
+                bgColor: 'green',
+                moves: [],
+            },
+            methods: {
+                reset: function(){
+                    this.isNewGame = true;
+                    this.playerLife = 100;
+                    this.monsterLife = 100;
+                    this.playerWidth = '100%';
+                    this.monsterWidth = '100%';
+                    this.moves = [];
+                },
+                isWin: function(){
+                    if(this.monsterLife <= 0){
+                        alert("You Win!");
+                        this.isNewGame = true;
+                        this.reset();
+                    }
+                    else if(this.playerLife <= 0){
+                        alert("You Lose!");
+                        this.isNewGame = true;
+                        this.reset();
+                    }
+                },
+                createMove: function(damageDone, damageTaken, healAmount){
+                    this.moves.unshift({hit: damageDone, damage: damageTaken, heal: healAmount});
+                    this.moves.forEach(function(move){
+                        console.log(move.heal);
+                    });
+                },
+                doAction: function(action){
+                    switch(action){
+                        case 'attack':
+                            var playerDamage = Math.ceil(Math.random()*10);
+                            this.playerLife -= playerDamage;
+                            var monsterDamage = Math.ceil(Math.random()*10);
+                            this.monsterLife -= monsterDamage;
+                            this.createMove(monsterDamage, playerDamage, false);
+                            this.isWin();
+                        break;
+                        case 'spcAttack':
+                            var playerDamage = Math.ceil(Math.random()*10);
+                            this.playerLife -= playerDamage;
+                            var monsterDamage = Math.ceil(Math.random()*20);
+                            this.monsterLife -= monsterDamage;
+                            this.createMove(monsterDamage, playerDamage, false);
+                            this.isWin();
+                        break;
+                        case 'heal':
+                            if(this.playerLife < 100){
+                                var healAmount = Math.ceil(Math.random()*20)+10;
+                                if(this.playerLife >= 71){
+                                    healAmount = Math.ceil(Math.random()*(100-this.playerLife));
+                                    this.playerLife += healAmount;
+                                }
+                                else this.playerLife += healAmount;
+                                var playerDamage = Math.ceil(Math.random()*10);
+                                this.playerLife -= playerDamage;
+                                this.createMove(null, playerDamage, healAmount);
+                            }
+                            else alert("Already at max health!");
+                        break;
+                        default:
+                    }
+                }
+            }
+        })
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
