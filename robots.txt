@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /public/files/
+Disallow: /public/images/
+Disallow: /*.php
+Sitemap: http://www.jaybandeira.com/sitemap.xml
