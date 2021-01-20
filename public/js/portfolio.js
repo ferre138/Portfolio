@@ -48,16 +48,6 @@ $(document).ready(function(){
 	};
 
   // ========================================================================= //
-  //  Add -min to all images (playing around)
-  // ========================================================================= //
-  let imgArr = document.getElementsByTagName('img');
-  for(var e of imgArr){
-      e.src = e.src.replace(/(.jpg|.png)/i, function(ext) {
-          return '-min' + ext;
-      });
-  };
-
-  // ========================================================================= //
   //  Typed Js
   // ========================================================================= //
   var typed = $(".typed");
