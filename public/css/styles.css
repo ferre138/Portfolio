@@ -157,6 +157,10 @@ header .navbar-nav {
 #portfolio{
     background-color: #F1F1F1;
 }
+#portfolio #baguetteBox-overlay .full-image img {
+    max-height: 80%;
+    max-width: 80%;
+}
 #contact{
     padding: 80px 0 80px 0;
 }
