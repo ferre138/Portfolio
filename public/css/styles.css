@@ -157,7 +157,7 @@ header .navbar-nav {
 #portfolio{
     background-color: #F1F1F1;
 }
-#portfolio #baguetteBox-overlay .full-image img {
+#baguetteBox-overlay .full-image img {
     max-height: 80%;
     max-width: 80%;
 }
