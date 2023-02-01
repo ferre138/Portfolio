@@ -2,12 +2,12 @@
 <html>
 <head>
 	<title>Patatap</title>
-	<script type="text/javascript" src="/scripts/paper-full.js"></script>
+	<script type="text/javascript" src="/patatap/scripts/paper-full.js"></script>
 	<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<!-- FontsAwesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="/stylesheets/circles.css">
+	<link rel="stylesheet" type="text/css" href="/patatap/stylesheets/circles.css">
 	<script type="text/paperscript" canvas="myCanvas">
 		var audioArr = {
 			a: "bubbles.mp3",
@@ -55,7 +55,7 @@
 				point = new Point(width,height) * Point.random();
 				var newCircle = new Path.Circle(point, 300);
 				newCircle.fillColor = randomColor();
-				var audio = new Audio('sounds/' + audioFile);
+				var audio = new Audio('patatap/sounds/' + audioFile);
 				audio.play();
 				circle = newCircle;
 				document.body.style.background = randomColor();
