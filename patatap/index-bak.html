@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patatap</title>
+	<script type="text/javascript" src="paper-full.js"></script>
+	<link rel="stylesheet" type="text/css" href="circles.css">
+	<script type="text/paperscript" canvas="myCanvas">
+		var audioArr = {
+			a: "bubbles.mp3",
+			b: "clay.mp3",
+			c: "confetti.mp3",
+			d: "corona.mp3",
+			e: "dotted-spiral.mp3",
+			f: "flash-1.mp3",
+			g: "flash-2.mp3",
+			h: "flash-3.mp3",
+			i: "glimmer.mp3",
+			j: "moon.mp3",
+			k: "pinwheel.mp3",
+			l: "piston-1.mp3",
+			m: "piston-2.mp3",
+			n: "piston-3.mp3",
+			o: "prism-1.mp3",
+			p: "prism-2.mp3",
+			q: "prism-3.mp3",
+			r: "splits.mp3",
+			s: "squiggle.mp3",
+			t: "strike.mp3",
+			u: "suspension.mp3",
+			v: "timer.mp3",
+			w: "ufo.mp3",
+			x: "veil.mp3",
+			y: "wipe.mp3",
+			z: "zig-zag.mp3"
+		};
+
+		var width = screen.width;
+		var height = screen.height;
+		var point;
+		var circle = [];
+		var keyPressed = false;
+
+		function onKeyDown(event){
+
+			if(event.key >= "a" && event.key <= "z"){
+				if (keyPressed){
+					circle.fillColor = "black";
+				}
+				var audioFile = audioArr[event.key];
+				keyPressed = true;
+				point = new Point(width,height) * Point.random();
+				var newCircle = new Path.Circle(point, 300);
+				newCircle.fillColor = randomColor();
+				var audio = new Audio('/sounds/' + audioFile);
+				audio.play();
+			}
+			
+		}
+
+		function onFrame(){
+			if (keyPressed){
+				circle.scale(0.9);
+			}
+		}
+
+		function randomColor(){
+			//pick a red from 0 - 255
+			var r = Math.floor(Math.random() * 256);
+			//pick a green from 0 - 255
+			var g = Math.floor(Math.random() * 256);
+ 			//pick a blue from 0 - 255
+			var b = Math.floor(Math.random() * 256);
+			return "rgb(" + r + ", " + g + ", " + b + ")";
+		}
+
+		function randomAudio(){
+			return Math.floor(Math.random() * 26);
+		}
+
+	</script>
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>

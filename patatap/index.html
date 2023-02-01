@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patatap</title>
+	<script type="text/javascript" src="/scripts/paper-full.js"></script>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<!-- FontsAwesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/circles.css">
+	<script type="text/paperscript" canvas="myCanvas">
+		var audioArr = {
+			a: "bubbles.mp3",
+			b: "clay.mp3",
+			c: "confetti.mp3",
+			d: "corona.mp3",
+			e: "dotted-spiral.mp3",
+			f: "flash-1.mp3",
+			g: "flash-2.mp3",
+			h: "flash-3.mp3",
+			i: "glimmer.mp3",
+			j: "moon.mp3",
+			k: "pinwheel.mp3",
+			l: "piston-1.mp3",
+			m: "piston-2.mp3",
+			n: "piston-3.mp3",
+			o: "prism-1.mp3",
+			p: "prism-2.mp3",
+			q: "prism-3.mp3",
+			r: "splits.mp3",
+			s: "squiggle.mp3",
+			t: "strike.mp3",
+			u: "suspension.mp3",
+			v: "timer.mp3",
+			w: "ufo.mp3",
+			x: "veil.mp3",
+			y: "wipe.mp3",
+			z: "zig-zag.mp3"
+		};
+
+		var width = screen.width;
+		var height = screen.height;
+		var point;
+		var circle = [];
+		var keyPressed = false;
+
+		function onKeyDown(event){
+
+			if(event.key >= "a" && event.key <= "z"){
+				if (keyPressed){
+					circle.scale(0);
+				}
+				var audioFile = audioArr[event.key];
+				keyPressed = true;
+				point = new Point(width,height) * Point.random();
+				var newCircle = new Path.Circle(point, 300);
+				newCircle.fillColor = randomColor();
+				var audio = new Audio('sounds/' + audioFile);
+				audio.play();
+				circle = newCircle;
+				document.body.style.background = randomColor();
+			}
+			
+		}
+
+		function onFrame(){
+			if (keyPressed){
+				circle.scale(0.9);
+			}
+		}
+
+		function randomColor(){
+			//pick a red from 0 - 255
+			var r = Math.floor(Math.random() * 256);
+			//pick a green from 0 - 255
+			var g = Math.floor(Math.random() * 256);
+ 			//pick a blue from 0 - 255
+			var b = Math.floor(Math.random() * 256);
+			return "rgb(" + r + ", " + g + ", " + b + ")";
+		}
+
+		function randomAudio(){
+			return Math.floor(Math.random() * 26);
+		}
+
+	</script>
+</head>
+<body>
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="https://ferre138.github.io/Portfolio/"><i class="fas fa-arrow-left"></i> Back to Jay's Website</a>
+		<button type="button" class="right btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">What is this?</button>
+	</nav>
+		
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalCenterTitle">Welcome to PatatapClone</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<p>PatatapClone is a web application created using the javascript vector graphics scripting framework called <a href="http://paperjs.org/about/" target="_blank">paper.js</a><br/> 
+	      	To see it in action you can press any key in your keyboard from a to z and the spacebar.<br/>
+	      	<small class="text-muted">Tip: Turn up the volume!</small></p>
+	      	<hr>
+	      	<p><small class="text-muted">PatatapClone is based on the Patatap application. Patatap can be found at <a href="https://patatap.com/" target="_blank">https://patatap.com/</a></small></p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+    <canvas id="myCanvas" resize></canvas>
+    <hr>
+    <p class="signature">Jayme Bandeira, 2018</p>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+				$('#exampleModalCenter').modal('show');
+			}
+		);
+	</script>
+</body>
+</html>
